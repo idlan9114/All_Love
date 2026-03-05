@@ -12,7 +12,7 @@ import CardHome_2 from '@/components/CardHome_2.vue';
         class="Main fixed inset-0 w-full h-screen object-cover object-[40%_center] -z-10"
         />
         <div> 
-        <router-link to="/shop" class="absolute underline text-white bottom-[280px] lg:bottom-[90px] left-1/2 transform -translate-x-1/2">
+        <router-link to="/shop" class="absolute underline text-white bottom-[200px] lg:bottom-[90px] left-1/2 transform -translate-x-1/2">
             Shop Now 
         </router-link>
         </div>
