@@ -13,7 +13,7 @@ export const useCounterStore = defineStore('counter', () => {
   const products_home = [
     { name: "ALL BODEGA SWEATER",
       price: "299.00",
-      img: "/src/assets/Images/AllBodega_Front.png",
+      img: "/src/assets/Images/Heirloom_Front.png",
       hoverImg: "/src/assets/Images/AllBodega_Back.png" },
 
     { name: "HEIRLOOM JERSEY",
