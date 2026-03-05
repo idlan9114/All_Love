@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+  font-family: 'Fredoka'; 
+  src: url('@/assets/Font/Fredoka.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Talina'; 
+  src: url('@/assets/Font/Talina.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit'; 
+  src: url('@/assets/Font/Outfit.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
