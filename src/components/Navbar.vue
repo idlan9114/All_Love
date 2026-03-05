@@ -8,15 +8,15 @@ import CartPanel from './CartPanel.vue';
 <template>
     <nav class="Navbar bg-gradient-to-t from-transparent to-black/80 h-16 flex items-center justify-center z-10">
        
-        <div class="ml-12">
+        <div class="ml-8">
             <MenuPanel/>
         </div>
 
-        <router-link class="tracking-wide pl-16 flex justify-center font-bold text-4xl font-[Talina] text-white mr-8 lg:mr-0" to="/">
+        <router-link class="tracking-wide pl-12 flex justify-center font-bold text-4xl font-[Talina] text-white mr-8 lg:mr-0" to="/">
             all love
         </router-link>
 
-        <div class="Right flex gap-4">
+        <div class="Right flex gap-3">
             <router-link class="text-white mt-1" to="/SignIn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
