@@ -9,7 +9,7 @@ import CardHome_2 from '@/components/CardHome_2.vue';
         <img 
         src="@/assets/Images/Main2.png" 
         alt="Main Page" 
-        class="Main fixed inset-0 w-full h-full object-cover object-[40%_center] -z-10"
+        class="Main fixed inset-0 w-full h-screen object-cover object-[40%_center] -z-10"
         />
         <div> 
         <router-link to="/shop" class="absolute underline text-white bottom-[80px] left-1/2 transform -translate-x-1/2">
