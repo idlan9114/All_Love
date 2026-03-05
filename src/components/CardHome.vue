@@ -22,8 +22,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-full px-4">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+  <div class="w-full ">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-8">
 
       <div class="w-full" v-for="product in products_home" :key="product.name">
         <MDBCard 

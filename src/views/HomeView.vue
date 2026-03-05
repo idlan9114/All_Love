@@ -12,7 +12,7 @@ import CardHome_2 from '@/components/CardHome_2.vue';
         class="Main fixed inset-0 w-full h-full object-cover object-[40%_center] -z-10"
         />
         <div> 
-        <router-link to="/shop" class="absolute underline text-white bottom-8 left-1/2 transform -translate-x-1/2">
+        <router-link to="/shop" class="absolute underline text-white bottom-16 left-1/2 transform -translate-x-1/2">
             Shop Now 
         </router-link>
         </div>
@@ -22,7 +22,7 @@ import CardHome_2 from '@/components/CardHome_2.vue';
             <CardHome/>
         </div>
     </div>
-    <div class="bg-white relative h-[700px] flex items-center justify-center ">
+    <div class="bg-white h-[700px] flex items-center justify-center ">
         <img 
             src="@/assets/Images/MainPage.jpeg" 
             alt="Main Page" 
@@ -31,7 +31,7 @@ import CardHome_2 from '@/components/CardHome_2.vue';
         <img 
             src="@/assets/Images/AllLove_Logo.png" 
             alt="Overlay Image" 
-            class="LoveAll absolute z-1 object-cover opacity-80"
+            class="LoveAll z-1 object-cover opacity-80"
         />
     </div>
     <div class="p-8 bg-white pt-16">
