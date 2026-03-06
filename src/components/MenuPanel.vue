@@ -2,17 +2,16 @@
 import { ref } from 'vue';
 const isOpen = ref(false);
 import Sidebar from './Sidebar.vue';
-
 </script>
 
 <template>
   <div class="relative">
 
-    <b-button @click="isOpen = true" class="flex flex-col justify-between w-6 h-5 p-0.5">
+    <button @click="isOpen = true" class="flex flex-col justify-between w-6 h-5 p-0.5">
       <span class="block w-full h-0.5 bg-white"></span>
       <span class="block w-full h-0.5 bg-white"></span>
       <span class="block w-full h-0.5 bg-white"></span>
-    </b-button>
+    </button>
 
 
     <div v-if="isOpen" class="fixed inset-0 overflow-hidden z-50">
@@ -28,10 +27,5 @@ import Sidebar from './Sidebar.vue';
 </template>
 
 <style scoped>
-.slide-enter-active, .slide-leave-active {
-  transition: transform 0.3s ease;
-}
-.slide-enter-from, .slide-leave-to {
-  transform: translateX(-100%);
-}
+
 </style>
