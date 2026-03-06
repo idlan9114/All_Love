@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import { MDBCard, MDBCardBody, MDBCardTitle } from "mdb-vue-ui-kit";
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useCounterStore } from '@/stores/counter'  
-import type router from "@/router";
 
+const router = useRouter()
 const store = useCounterStore()
 const { products_home } = store 
+
+// Navigate to product view when card is clicked
+const goToProduct = (productId: number) => {
+  router.push(`/product/${productId}`)
+}
 
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
@@ -22,12 +28,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-full ">
+  <div class="w-full">
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-8">
 
-      <div class="w-full" v-for="product in products_home" :key="product.name">
+      <div class="w-full" v-for="product in products_home" :key="product.id">
         <MDBCard 
           class="Card w-full h-full"
+          @click="goToProduct(product.id)"
         >
           <div class="image-wrapper">
             <img :src="product.img"
@@ -56,7 +63,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
+/* Your existing styles remain the same */
 .Card {
   opacity: 0;
   transform: scale(0.8);
@@ -147,5 +154,4 @@ onMounted(() => {
     padding: 1rem !important;
   }
 }
-
 </style>
