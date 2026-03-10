@@ -32,11 +32,10 @@ const router = createRouter({
   ],
 
   scrollBehavior(to, from, savedPosition) {
-    // If there's a saved position (like when using browser back button), use that
+   
     if (savedPosition) {
       return savedPosition
     } else {
-      // Otherwise scroll to top
       return { top: 0 }
     }
   }

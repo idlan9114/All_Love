@@ -8,7 +8,6 @@ const router = useRouter()
 const store = useCounterStore()
 const { products_home } = store 
 
-// Navigate to product view when card is clicked
 const goToProduct = (productId: number) => {
   router.push(`/product/${productId}`)
 }
