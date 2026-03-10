@@ -6,34 +6,24 @@ import { MDBCard } from "mdb-vue-ui-kit";
 
 const route = useRoute()
 const store = useCounterStore()
-
-// Get product ID from route params
 const productId = computed(() => Number(route.params.id))
-
-// Get product details using the store helper function
 const product = computed(() => store.getProductById(productId.value))
-
-// State for main image (allows switching between img and hoverImg)
 const mainImage = ref('')
 
-// Update main image when product loads
+
 const setMainImage = (image: string) => {
   mainImage.value = image
 }
 
-// Initialize main image when product changes
 if (product.value) {
   mainImage.value = product.value.img
 }
 
-// Quantity selector
 const quantity = ref(1)
 const selectedSize = ref('')
 
-// Size options
 const sizes = ['S', 'M', 'L', 'XL']
 
-// Add to cart function
 const addToCart = () => {
   if (!selectedSize.value) {
     alert('Please select a size')
@@ -46,7 +36,6 @@ const addToCart = () => {
     quantity: quantity.value
   })
   
-  // Here you would typically dispatch to a cart store
   alert(`Added ${product.value?.name} (Size: ${selectedSize.value}, Qty: ${quantity.value}) to cart!`)
 }
 </script>
@@ -146,28 +135,6 @@ const addToCart = () => {
             >
               Add to Cart
             </button>
-          </div>
-        </div>
-
-        <!-- Additional Info -->
-        <div class="additional-info border-t pt-6">
-          <div class="grid grid-cols-2 gap-4 text-sm">
-            <div>
-              <p class="font-semibold mb-1">Free Shipping</p>
-              <p class="text-gray-600">On orders over RM200</p>
-            </div>
-            <div>
-              <p class="font-semibold mb-1">Easy Returns</p>
-              <p class="text-gray-600">30-day return policy</p>
-            </div>
-            <div>
-              <p class="font-semibold mb-1">Secure Payment</p>
-              <p class="text-gray-600">100% secure checkout</p>
-            </div>
-            <div>
-              <p class="font-semibold mb-1">Customer Support</p>
-              <p class="text-gray-600">24/7 available</p>
-            </div>
           </div>
         </div>
       </div>
