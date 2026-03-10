@@ -1,128 +1,119 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { useCounterStore } from '@/stores/counter'
-import { computed, ref } from 'vue'
-import { MDBCard } from "mdb-vue-ui-kit";
+import { computed, ref, onMounted, watch } from 'vue'
 
 const route = useRoute()
 const store = useCounterStore()
 const productId = computed(() => Number(route.params.id))
 const product = computed(() => store.getProductById(productId.value))
 const mainImage = ref('')
+const selectedSize = ref('')
+const selectedColor = ref('')
 
+onMounted(() => {
+  if (product.value) {
+    mainImage.value = product.value.img
+  }
+})
+
+watch(() => product.value, (newProduct) => {
+  if (newProduct) {
+    mainImage.value = newProduct.img
+  }
+})
 
 const setMainImage = (image: string) => {
   mainImage.value = image
 }
 
-if (product.value) {
-  mainImage.value = product.value.img
-}
-
-const selected = ref('')
-const productstatus = computed(() => {
-  
+const productStatus = computed(() => {
+  return 'In Stock'
 })
 
+const addToCart = () => {
+  if (!selectedSize.value) {
+    alert('Please select a size')
+    return
+  }
+  if (!selectedColor.value) {
+    alert('Please select a color')
+    return
+  }
+  console.log('Added to cart:', {
+    product: product.value,
+    size: selectedSize.value,
+    color: selectedColor.value
+  })
+}
 </script>
 
 <template>
   <div v-if="product" class="flex gap-4 justify-center mx-auto px-4 pt-20 min-h-screen">
     
-    <!-- Left Part -->
-
-    <div class="h-full w-full">
-      
+    <!-- Left Part - Product Info -->
+    <div class="sticky top-40 h-fit w-full flex items-center mt-20">
+      <div class="mt-10 ml-20">
+        <h1 class="text-sm font-[Outfit]">{{product.name}}</h1>
+        <h1 class="text-2xl font-[Outfit]">${{ product.price }}</h1>
+        <p class="text-sm text-gray-600 mt-4 max-w-xs text-justify">{{ product.description }}</p>
+      </div>
     </div>
 
-    <!-- Middle Part  -->
-    
+    <!-- Middle Part - Product Images -->
     <div class="h-full w-full">
-      <img src="@/assets/Images/AllBodega_Back.png" alt="Description of image" class="w-full h-auto" style="min-height: 150%;">
-      <img src="@/assets/Images/AllBodega_Front.png" alt="Description of image" class="w-full h-auto" style="min-height: 150%;">
+      <img 
+        :src="product.img" 
+        :alt="product.name" 
+        class="w-full h-auto mb-4 min-h-150%"
+        
+      >
+      <img 
+        :src="product.hoverImg" 
+        :alt="product.name" 
+        class="w-full h-auto min-h-150%"
+      >
     </div>
 
-
-    <!-- Rigth Part -->
-
-    <div class="h-full w-full flex flex-col items-center mt-20">
-
+    <!-- Right Part - Product Options -->
+    <div class="sticky top-40 h-fit w-full flex flex-col items-center mt-20">
       <div>
-        <div class="text-sm text-gray-600 mb-1 mt-10">Size: {{ selected }}</div>
+        <div class="text-sm text-gray-600 mb-1 mt-10">Size: </div>
+        <select 
+          v-model="selectedSize" 
+          class="border border-gray-400 rounded px-2 py-1 text-sm w-[300px] h-[40px] cursor-pointer focus:outline-none focus:ring-1 focus:ring-gray-400"
+        >
+          <option value="">Select Size</option>
+          <option value="S">S - {{ productStatus }}</option>
+          <option value="M">M - {{ productStatus }}</option>
+          <option value="L">L - {{ productStatus }}</option>
+          <option value="XL">XL - {{ productStatus }}</option>
+        </select>
+      </div>
 
-          <select v-model="selected" class="border border-gray-400 rounded px-2 py-1 text-sm w-28 cursor-pointer focus:outline-none focus:ring-1 focus:ring-gray-400">
-            <option disabled value="">S - {{ productstatus }}</option>
-            <option>M - {{ productstatus }}</option>
-            <option>L - {{ productstatus }}</option>
-            <option>XL - {{ productstatus }}</option>
-          </select>
+      <div class="mt-10">
+        <div class="text-sm text-gray-600 mb-1 mt-1">Color: </div>
+        <select 
+          v-model="selectedColor" 
+          class="border border-gray-400 rounded px-2 py-1 text-sm w-[300px] h-[40px] cursor-pointer focus:outline-none focus:ring-1 focus:ring-gray-400"
+        >
+          <option value="">Select Color</option>
+          <option value="Black">Black - {{ productStatus }}</option>
+          <option value="Blue">Blue - {{ productStatus }}</option>
+          <option value="White">White - {{ productStatus }}</option>
+        </select>
+      </div>
 
-        </div>
-
-        <div>
-          <div class="text-sm text-gray-600 mb-1 mt-1 ">Color: {{ selected }}</div>
-
-          <select v-model="selected" class="border border-gray-400 rounded px-2 py-1 text-sm w-28 cursor-pointer focus:outline-none focus:ring-1 focus:ring-gray-400">
-            <option disabled value="">S - {{ productstatus }}</option>
-            <option>M - {{ productstatus }}</option>
-            <option>L - {{ productstatus }}</option>
-            <option>XL - {{ productstatus }}</option>
-          </select>
-
-        </div>
-
-        <button class="bg-black text-white mt-10 px-4 py-2 rounded-[10px] ">
-          <h1 class="text-[15px] mt-[7px]">ADD TO CART</h1>
-        </button>
-
+      <button 
+        @click="addToCart"
+        class="bg-black text-white mt-14 px-4 py-2 rounded-[3px] w-[300px] hover:bg-gray-800 transition-colors"
+      >
+        <h1 class="text-[15px] mt-[7px]">ADD TO CART</h1>
+      </button>
     </div>
-    
+  </div>
+  
+  <div v-else class="flex justify-center items-center min-h-screen">
+    Loading...
   </div>
 </template>
-
-<style scoped>
-.main-image {
-  height: 400px;
-  object-fit: cover;
-}
-
-@media (min-width: 640px) {
-  .main-image {
-    height: 500px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .main-image {
-    height: 600px;
-  }
-}
-
-.thumbnail {
-  transition: transform 0.2s ease;
-}
-
-.thumbnail:hover {
-  transform: scale(1.05);
-}
-
-.thumbnail.active img {
-  border-color: black;
-  border-width: 2px;
-}
-
-.image-wrapper {
-  cursor: pointer;
-}
-
-/* For mobile tap */
-@media (hover: none) {
-  .thumbnail:active {
-    transform: scale(0.95);
-  }
-}
-
-.breadcrumbs a {
-  transition: color 0.2s ease;
-}
-</style>
