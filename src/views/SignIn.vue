@@ -19,18 +19,18 @@ const callback = (response: any) => {
 </script>
 
 <template>
-<div class="flex justify-center  bg-gray-300 place-items-center h-screen ">
+<div class="flex justify-center  bg-black place-items-center h-screen ">
   <div class="login-container flex flex-col items-center justify-center">
-    <img src="@/assets/Images/AllLove_Logo.png" alt="All Love Logo" class="mb-4 "/>
-    <h2 class="font-[Outfit] pb-8">Sign In</h2>
+    <img src="@/assets/Images/AllLove_Logo.png" alt="All Love Logo" class="fixed -z-1 opacity-35 w-[150vw] md:w-[80vw] max-w-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2""/>
+    <h2 class="font-[Outfit] pb-8 text-white">Log In</h2>
 
-    <form @submit.prevent="handleLogin">
+    <form @submit.prevent="handleLogin" class="">
         
-        <input type="username" v-model="username" placeholder="Username" required class="px-2 py-1"/>
-        <input type="email" v-model="email" placeholder="Email" required class="px-2 py-1"/>
+        <input type="username" v-model="username" placeholder="Username" required class="px-2 py-1 rounded-lg"/>
+        <input type="email" v-model="email" placeholder="Email" required class="px-2 py-1 rounded-lg"/>
 
-        <div class="flex justify-center items-center">
-        <button type="submit" class="bg-gray-200 text-black px-6 py-2 hover:bg-black hover:!text-white transition-colors">Sign In</button>
+        <div class="flex justify-center items-center mt-8">
+        <button type="submit" class="bg-gray-200 text-black px-6 py-2 hover:bg-gray-600 hover:!text-white transition-colors">Log In</button>
         </div>
 
     </form>

@@ -6,7 +6,7 @@ import { useProductStore } from '@/stores/products'
 
 const router = useRouter()
 const store = useProductStore()
-const { products_home2 } = store 
+const { products } = store 
 
 const goToProduct = (productId: number) => {
   router.push(`/product/${productId}`)
@@ -30,7 +30,7 @@ onMounted(() => {
   <div class="w-full">
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-8">
 
-      <div class="w-full" v-for="product in products_home2" :key="product.id">
+      <div class="w-full" v-for="(product, index) in products.slice(4, 8)" :key="product.id">
         <MDBCard 
           class="Card w-full h-full"
           @click="goToProduct(product.id)"
