@@ -2,10 +2,10 @@
 import { MDBCard, MDBCardBody, MDBCardTitle } from "mdb-vue-ui-kit";
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { useCounterStore } from '@/stores/counter'  
+import { useProductStore } from '@/stores/products'  
 
 const router = useRouter()
-const store = useCounterStore()
+const store = useProductStore()
 const { products_home } = store 
 
 const goToProduct = (productId: number) => {
